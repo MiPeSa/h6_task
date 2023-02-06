@@ -1,13 +1,22 @@
 # h6 Tehtävä
 
-x) Lue ja tiivistä. Tiivistelmäksi riittää muutama ranskalainen viiva per artikkeli. (Tässä alakohdassa ei tarvitse tehdä testejä tietokoneella)
-Apache Software Foundation 2023: Getting Started
-Apache Software Foundation 2023: Name-based Virtual Host Support
-a) Vaihda Apachelle uusi etusivu. Varmista, että voit muokata sivua normaalilla käyttäjällä (ilman sudoa).
-b) Tee Apachen asetustiedostoon kirjoitusvirhe. Etsi se työkalujen avulla. Vertaa 'apache2ctl configtest' ja virhelokin /var/log/apache2/error.log virheilmoituksia.
-n) Vapaaehtoinen: Tee Apachelle kaksi nimipohjaista palvelua (name based virtual host), foo.example.com ja bar.example.com. Voit simuloida nimipalvelun toimintaa hosts-tiedoston avulla.
-
 ## x)
+
+### Apache Software Foundation 2023: Getting Started
+
+-"Client" eli käyttäjän verkkoselain muodostaa yhteyden palvelimeen ja pyytää resursseja URL-polun avulla.
+- Palvelin lähettää vastauksen, joka koostuu palvelimen tilakoodista(Status code) sekä vastauksen rungosta(Response body). Status code kertoo onnistuiko pyyntö vai ei, mikäli ei niin se kertoo millainen virhe ilmaantui.
+- Palvelimeen yhdistääkseen "client:n" on ensin määriteltävä palvelimen nimi IP-osoitteeksi muodostaakseen yhteyden palvelimeen.  
+- Apache HTTP palvelin konfiguroidaan käyttämällä yksinkertaisia tekstitiedostoja, joiden määrityskäskyt voivat olla yleisiä tai tiettyä hakemistoa koskevia. Jos haluaa, että määrityskäskyt ovat yleisiä laitetaan ne ``<Directory>, <Location>, <VirtualHost>`` ulkopuolelle ja tiettyyn hakemistoon kohdistaessa ``<Directory>`` sisään.
+- DocumentRoot määrittää mihin tiedostojärjestelmään staattinen sisältö sijoitetaan.(HTML files, image files, CSS files)
+- Apache pavelimen järjestelmänvalvojana arvokkaita ovat lokitiedostot sekä erityisesti virheloki.
+
+### Apache Software Foundation 2023: Name-based Virtual Host Support
+
+- IP-pohajinen isännöinti(IP-based hosting), vaatii erilliset IP-osoitteet jokaiselle isännälle(host).
+- Nimiin perustuva isännöinti(Name-based hosting) jakaa saman IP-osoitteen useiden isäntien(host) kesken ja on täten usein simppelimpi ratkaisu.
+- Name-based virtual host valitsee vain sopivimman name-based virtual hostin, kun ehdokkaat on rajattu parhaaseen IP-pohjaiseen vastaavuuteen.
+- Pyynnöstä palvelin löytää tarkimman vastaavan ``<VirtualHost>`` argumentin pyynnön käyttämän IP-osoitteen ja portin(port) perusteella. Jos useampi virtuaalinen host sisältää vastaavan IP-osoitteen ja portin, Apache vertaa seuraavaksi ``<ServerName>`` ja ``<ServerAlias>`` komentoja pyynnössä olevaan palvelimen nimeen. Jos vastaavuutta ei löydy valitsee palvelin ensimmäisen vaihtoehdon, joka vastaa IP-osoitteen ja portin perusteella.
 
 ## a) 
 
