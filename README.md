@@ -36,13 +36,6 @@ Komento:
 
 - ``sudoedit``komennon avulla pääsin muokkamaan suoraan tiedostoa ``micro`` editorilla, jotta palvelin toimii uuden luomani sivun kautta. Kirjoitin sivun tiedostoon tiedostopolun, josta palvelin hakee sivun.
 
-    <VirtualHost *:80>
-        DocumentRoot /home/miikkas/public_sites/
-        <Directory /home/miikkas/public_sites/>
-            require all granted
-        </Directory>
-    </VirtualHost>
-
 ![Add file: frontpage](cat-frontpage.png)
 
 - Otin käyttöön sivuista uuden luomani frontpage.conf sivun. Ensin katsoin saatavilla olevat sivut komennolla ``$ ls /etc/apache2/sites-available/``
@@ -91,3 +84,9 @@ Kävin katsomassa myös ``apache2ctl configtest`` tuloksia, josta löytyi:
 Mielestäni tätä kautta sai paljon selvemmän kuvan ongelmasta. ``configtest`` tarjosi suoraan, että ``DocumentRoot [/home/miikkas/public-sites/] does not exist``, joka kertoo suoraan, että kyseinen teidostopolku ei ole olemassa. Error osoittaa, että vika on selkeästi tiedostopolussa, sillä lopussa lukee ``Syntax OK``, joka kertoo ettei tiedostossa ole kirjoitusvirheitä. 
 
 Molemmat virheilmoitukset antavat virhekoodit, joiden avulla voisi lähteä vikaa myös etsimään. ``configtest`` ei kuitenkaan tarjoa esimerkiksi aikaleimaa, joka auttaa miettimään milloin ja miten virhe olisi voinut tapahtua.
+
+## Lähteet
+
+- The Apache Software Foundation 2023, Getting Started, Luettavissa: https://httpd.apache.org/docs/2.4/getting-started.html
+- The Apache Software Foundation 2023, Name-based Virtual Host Support, Luettavissa: https://httpd.apache.org/docs/current/vhosts/name-based.html
+- Karvinen Tero, https://terokarvinen.com/2023/linux-palvelimet-2023-alkukevat/#h6-based
