@@ -4,7 +4,7 @@
 
 ### Apache Software Foundation 2023: Getting Started
 
--"Client" eli käyttäjän verkkoselain muodostaa yhteyden palvelimeen ja pyytää resursseja URL-polun avulla.
+- "Client" eli käyttäjän verkkoselain muodostaa yhteyden palvelimeen ja pyytää resursseja URL-polun avulla.
 - Palvelin lähettää vastauksen, joka koostuu palvelimen tilakoodista(Status code) sekä vastauksen rungosta(Response body). Status code kertoo onnistuiko pyyntö vai ei, mikäli ei niin se kertoo millainen virhe ilmaantui.
 - Palvelimeen yhdistääkseen "client:n" on ensin määriteltävä palvelimen nimi IP-osoitteeksi muodostaakseen yhteyden palvelimeen.  
 - Apache HTTP palvelin konfiguroidaan käyttämällä yksinkertaisia tekstitiedostoja, joiden määrityskäskyt voivat olla yleisiä tai tiettyä hakemistoa koskevia. Jos haluaa, että määrityskäskyt ovat yleisiä laitetaan ne ``<Directory>, <Location>, <VirtualHost>`` ulkopuolelle ja tiettyyn hakemistoon kohdistaessa ``<Directory>`` sisään.
