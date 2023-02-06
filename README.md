@@ -16,16 +16,16 @@ n) Vapaaehtoinen: Tee Apachelle kaksi nimipohjaista palvelua (name based virtual
 - Aloitin uuden etusivun luomisen muokkaamalla uuden tiedoston ``/etc/apache2/sites-available/`` kansioon. Nimesin tiedoston ``frontpage.conf``.
 Komento:
 
-    $ sudoedit /etc/apache2/sites-available/frontpage.conf
+        $ sudoedit /etc/apache2/sites-available/frontpage.conf
 
 - ``sudoedit``komennon avulla pääsin muokkamaan suoraan tiedostoa ``micro`` editorilla, jotta palvelin toimii uuden luomani sivun kautta. Kirjoitin sivun tiedostoon tiedostopolun, josta palvelin hakee sivun.
 
-  <VirtualHost *:80>
-    DocumentRoot /home/miikkas/public_sites/
-    <Directory /home/miikkas/public_sites/>
-      require all granted
-    </Directory>
-  </VirtualHost>
+    <VirtualHost *:80>
+        DocumentRoot /home/miikkas/public_sites/
+        <Directory /home/miikkas/public_sites/>
+            require all granted
+        </Directory>
+    </VirtualHost>
 
 ![Add file: frontpage](cat-frontpage.png)
 
@@ -37,7 +37,7 @@ Komento:
 - Tämän jälkeen otin vanhan etusivun pois käytöstä komennolla ``$ sudo a2dissite 000-default.conf``, jonka jälkeen käynnistin apache2 palvelimen uudelleen komennolla ``$ sudo systemctl restart apache2.service``.
 
 - Siirryin kotihakemistoon tekemään vielä kansion ja html tiedoston sivua varten. Siirryin kotihakemistoon komennolla ``cd`` ja tarkistin polun vielä ``pwd`` komennolla. Tein kansion public_sites komennolla ``$ mkdir public_sites`` ja siirryin kansioon ``$ cd public_sites/``. 
-- Tein kansioon ``index.html`` tiedoston, johon kirjoitin simppelin lauseen, joka tulee uudelle etusivulle näkyviin.
+- Tein kansioon komennolla ``$ micro index.html`` tiedoston, johon kirjoitin simppelin lauseen, joka tulee uudelle etusivulle näkyviin.
 
 ![Add file: Uusi Etusivu](index-micro.png)
 
@@ -72,6 +72,6 @@ Kävin katsomassa myös ``apache2ctl configtest`` tuloksia, josta löytyi:
 
 ![Add file: Configtest](configtest.png)
 
-Mielestäni tätä kautta sai paljon selvemmän kuvan ongelmasta. ``configtest`` tarjosi suoraan, että ``DocumentRoot [/home/miikkas/public-sites/] does not exist, joka kertoo suoraan, että kyseinen teidostopolku ei ole olemassa. Error osoittaa, että vika on selkeästi tiedostopolussa, sillä lopussa lukee ``Syntax OK``, joka kertoo ettei tiedostossa ole kirjoitusvirheitä. 
+Mielestäni tätä kautta sai paljon selvemmän kuvan ongelmasta. ``configtest`` tarjosi suoraan, että ``DocumentRoot [/home/miikkas/public-sites/] does not exist``, joka kertoo suoraan, että kyseinen teidostopolku ei ole olemassa. Error osoittaa, että vika on selkeästi tiedostopolussa, sillä lopussa lukee ``Syntax OK``, joka kertoo ettei tiedostossa ole kirjoitusvirheitä. 
 
 Molemmat virheilmoitukset antavat virhekoodit, joiden avulla voisi lähteä vikaa myös etsimään. ``configtest`` ei kuitenkaan tarjoa esimerkiksi aikaleimaa, joka auttaa miettimään milloin ja miten virhe olisi voinut tapahtua.
