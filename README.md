@@ -20,7 +20,7 @@
 
 ### Apache Software Foundation 2023: Name-based Virtual Host Support
 
-- IP-pohajinen isännöinti(IP-based hosting), vaatii erilliset IP-osoitteet jokaiselle isännälle(host).
+- IP-pohjainen isännöinti(IP-based hosting), vaatii erilliset IP-osoitteet jokaiselle isännälle(host).
 - Nimiin perustuva isännöinti(Name-based hosting) jakaa saman IP-osoitteen useiden isäntien(host) kesken ja on täten usein simppelimpi ratkaisu.
 - Name-based virtual host valitsee vain sopivimman name-based virtual hostin, kun ehdokkaat on rajattu parhaaseen IP-pohjaiseen vastaavuuteen.
 - Pyynnöstä palvelin löytää tarkimman vastaavan ``<VirtualHost>`` argumentin pyynnön käyttämän IP-osoitteen ja portin(port) perusteella. Jos useampi virtuaalinen host sisältää vastaavan IP-osoitteen ja portin, Apache vertaa seuraavaksi ``<ServerName>`` ja ``<ServerAlias>`` komentoja pyynnössä olevaan palvelimen nimeen. Jos vastaavuutta ei löydy valitsee palvelin ensimmäisen vaihtoehdon, joka vastaa IP-osoitteen ja portin perusteella.
